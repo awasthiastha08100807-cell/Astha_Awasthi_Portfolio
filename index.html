@@ -1,203 +1,244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Astha Awasthi — Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astha Awasthi — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#6366f1;
+  --accent-light:#8b5cf6;
+  --bg:#f6f8fc;
+  --card-bg:#ffffff;
+  --muted:#5f6368;
+  --radius:14px;
+  --shadow:0 8px 22px rgba(0,0,0,0.08);
+}
 
-  <style>
-    :root{
-      --bg:#f6f8fc;
-      --text:#1a1a1a;
-      --muted:#5f6368;
-      --card-bg:#ffffff;
-      --accent:#6366f1;
-      --accent-light:#a5b4ff;
-      --radius:14px;
-      --shadow:0 8px 22px rgba(0,0,0,0.08);
-      --max-width:900px;
-    }
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg); color:#1a1a1a; line-height:1.6; scroll-behavior:smooth;}
+a{text-decoration:none; transition:0.3s;}
+a:hover{transform:scale(1.05);}
 
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-    body{
-      background:var(--bg);
-      color:var(--text);
-      padding:32px;
-      display:flex;
-      justify-content:center;
-      animation:fadeIn 0.8s ease-in;
-    }
+/* Container */
+.container{max-width:1000px;margin:0 auto;padding:40px 20px;}
 
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes slideDown{from{transform:translateY(-12px);opacity:0}to{transform:translateY(0);opacity:1}}
-    @keyframes fadeUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
-    @keyframes pulse{
-      0%{transform:scale(1);}
-      50%{transform:scale(1.02);}
-      100%{transform:scale(1);}
-    }
+/* Header */
+header{
+  text-align:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-light));
+  color:white;
+  padding:80px 20px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  animation:slideDown 0.8s ease-out;
+}
+header h1{font-size:3rem;margin-bottom:15px; animation:fadeIn 1s ease forwards;}
+header p{font-size:1.2rem;margin-bottom:20px; animation:fadeIn 1.2s ease forwards;}
+header .links{
+  display:flex; justify-content:center; gap:15px; flex-wrap:wrap;
+  animation:fadeIn 1.4s ease forwards;
+}
+header .links a{
+  display:inline-block; padding:10px 20px; border-radius:25px;
+  background:white; color:var(--accent); font-weight:600; border:2px solid white;
+  transition:0.3s;
+}
+header .links a:hover{
+  background:var(--accent); color:white; transform:scale(1.1);
+}
 
-    .container{max-width:var(--max-width);width:100%}
+/* Sections */
+section{margin:60px 0; opacity:0; transform:translateY(30px); transition:0.6s ease;}
+section.visible{opacity:1; transform:translateY(0);}
+h2{
+  font-size:2.2rem; color:var(--accent); text-align:center; margin-bottom:40px; position:relative;
+}
+h2::after{
+  content:""; position:absolute; width:50px; height:3px; background:var(--accent-light);
+  left:50%; transform:translateX(-50%); bottom:-10px; border-radius:2px;
+}
 
-    header{
-      background:linear-gradient(135deg,#6366f1,#8b5cf6);
-      padding:36px;
-      border-radius:var(--radius);
-      color:white;
-      box-shadow:var(--shadow);
-      animation:slideDown 0.7s ease-out;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    header:hover{
-      transform:translateY(-4px);
-      box-shadow:0 12px 28px rgba(0,0,0,0.12);
-    }
+/* Cards */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+.card{
+  background:var(--card-bg);
+  padding:25px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  animation:fadeUp 0.6s ease forwards;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 16px 32px rgba(0,0,0,0.15);
+}
+.card .tech{
+  display:inline-block;
+  margin-right:6px;
+  margin-top:10px;
+  padding:5px 10px;
+  background:var(--accent-light);
+  color:white;
+  border-radius:15px;
+  font-size:0.85rem;
+  transition:transform 0.3s;
+}
+.card .tech:hover{transform:scale(1.1);}
 
-    header h1{font-size:38px;font-weight:700;margin-bottom:8px}
-    header p{color:rgba(255,255,255,0.9);margin-bottom:6px}
-    header a{color:#fff;text-decoration:none;font-weight:500}
-    header a:hover{opacity:0.8;transform:scale(1.05);transition:0.2s ease}
+/* Skills */
+.skills{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;}
+.skill-badge{
+  background:var(--accent); color:white;
+  padding:15px 20px; border-radius:25px; font-weight:600;
+  transition:transform 0.3s;
+}
+.skill-badge:hover{transform:scale(1.1);}
 
-    .section{
-      margin-top:40px;
-      padding:28px;
-      background:var(--card-bg);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      animation:fadeUp 0.6s ease-out;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .section:hover{
-      transform:translateY(-4px);
-      box-shadow:0 12px 28px rgba(0,0,0,0.12);
-    }
+/* Contact Section */
+#contact form{
+  display:flex; flex-direction:column; gap:15px; max-width:500px; margin:0 auto;
+}
+#contact input,#contact textarea{
+  padding:12px 15px; border-radius:var(--radius);
+  border:1px solid #d1d5db; font-size:1rem; resize:none;
+  transition:0.3s;
+}
+#contact input:focus,#contact textarea:focus{
+  outline:none; border-color:var(--accent); box-shadow:0 4px 12px rgba(99,102,241,0.2);
+}
+#contact button{
+  padding:12px 20px; background:var(--accent); color:white; border:none;
+  border-radius:var(--radius); cursor:pointer; font-weight:600;
+  transition:0.3s;
+  animation:bounce 1s infinite alternate;
+}
+#contact button:hover{background:var(--accent-light); transform:scale(1.05);}
 
-    h2{
-      font-size:22px;
-      font-weight:600;
-      margin-bottom:12px;
-      color:var(--accent);
-      position:relative;
-    }
-    h2::after{
-      content:"";
-      position:absolute;
-      width:50px;
-      height:3px;
-      background:var(--accent-light);
-      left:0;
-      bottom:-6px;
-      border-radius:2px;
-      animation:slideDown 0.5s ease-out;
-    }
+/* Footer */
+footer{text-align:center; padding:30px 0; color:var(--muted); font-size:0.9rem;}
 
-    .project-card{
-      padding:14px 0;
-      border-bottom:1px solid #e5e7eb;
-      transition:transform 0.3s ease, background 0.3s ease;
-    }
-    .project-card:last-child{border-bottom:none}
-    .project-card strong{font-size:17px;color:#111}
-    .project-card:hover{
-      transform:translateX(6px);
-      background:rgba(99,102,241,0.05);
-      animation:pulse 0.6s ease;
-    }
-
-    footer{
-      text-align:center;
-      margin-top:40px;
-      color:var(--muted);
-      font-size:14px;
-      letter-spacing:0.5px;
-    }
-  </style>
+/* Animations */
+@keyframes slideDown{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);}}
+@keyframes bounce{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-5px);}
+}
+</style>
 </head>
-
 <body>
-  <div class="container">
 
-    <!-- HEADER -->
-    <header>
-      <h1>Astha Awasthi</h1>
-      <p>Software Development Engineer — Backend | Distributed Systems</p>
-      <p><a href="mailto:awasthi.astha.08100807@gmail.com">awasthi.astha.08100807@gmail.com</a></p>
-      <p>
-        <a href="https://www.linkedin.com/in/astha-awasthi08/" target="_blank">LinkedIn</a> ·
-        <a href="https://github.com/Aasthaawasthi0807" target="_blank">GitHub</a> ·
-        <a href="https://leetcode.com/u/astha0807/" target="_blank">LeetCode</a>
-      </p>
-    </header>
+<div class="container">
 
-    <!-- SUMMARY -->
-    <section class="section">
-      <h2>Summary</h2>
-      <p>Software Engineer with 2+ years of experience building backend systems, scalable services, and distributed components. Strong in Python, Java, C/C++, concurrency, system design, microservices, and cloud platforms.</p>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="section">
-      <h2>Work Experience</h2>
-
-      <div class="project-card">
-        <strong>Software Engineer — Cisco</strong> (Aug 2023 — Present)<br>
-        <p>Developed scalable backend components for Cisco FMC, optimizing API workflows and configuration handling. Built automation workflows using REST APIs, Postman, JavaScript & Python. Improved backend logic through debugging, data parsing, and policy-management enhancements. Contributed to reliable CI/CD pipelines and reduced latency by ~40%.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Software Engineer Intern — Cisco</strong> (Jan 2023 — Jun 2023)<br>
-        <p>Optimized FMC backend APIs, automated configuration flows using REST APIs, and enhanced policy-management reliability. Built scalable Postman collections for automated testing and regression coverage.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Backend Developer Intern — Cuvette</strong> (Jul 2022 — Dec 2022)<br>
-        <p>Developed backend features using Django & REST APIs, optimized database queries for performance, and contributed to responsive UI components using HTML, CSS, and JavaScript.</p>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section">
-      <h2>Key Projects</h2>
-
-      <div class="project-card">
-        <strong>Distributed Task Scheduler</strong>
-        <p>Java · Spring Boot · Kafka · Redis </p>
-        <p>Designed and built a horizontally scalable distributed job scheduler supporting retries, priority queues, worker autoscaling, distributed locking, and end-to-end task tracking. Reduced job delays by 40% and improved reliability across multi-node deployments.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Real-Time Log Monitoring & Alerting System</strong>
-        <p>Python · FastAPI · Redis Streams </p>
-        <p>Built a real-time log ingestion and alerting system with sub-second latency. Implemented pattern-based alert rules, async log processors, and Slack/Email alert routing. Enabled fault-tolerant ingestion across services.</p>
-      </div>
-
-      <div class="project-card">
-        <strong>Intelligent Log Anomaly Detector</strong>
-        <p>Python · ML · Scikit-learn </p>
-        <p>Implemented ML-based anomaly detection pipeline using TF-IDF and supervised models. Integrated with real-time Kafka pipeline for on-the-fly inference. Improved precision by 12% and reduced Mean-Time-To-Detect incidents by ~40%.</p>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section">
-      <h2>Technical Skills</h2>
-      <p>Java · Python · C/C++ · Distributed Systems · Microservices · Spring Boot · Docker · Kubernetes · Kafka · Redis · SQL · Linux · Algorithms · Data Structures</p>
-    </section>
-
-    <!-- EDUCATION -->
-    <section class="section">
-      <h2>Education</h2>
-      <p><strong>B.Tech — Information Technology</strong><br>Gyan Ganga Institute of Technology and Sciences · 2019–2023 · GPA: 8.69</p>
-    </section>
-
-    <footer>
-      <p>© <span id="year"></span> Astha Awasthi</p>
-    </footer>
+<header>
+  <h1>Astha Awasthi</h1>
+  <p>Software Development Engineer — Backend | Distributed Systems</p>
+  <div class="links">
+    <a href="mailto:awasthi.astha.08100807@gmail.com">Email</a>
+    <a href="https://www.linkedin.com/in/astha-awasthi08/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/Aasthaawasthi0807" target="_blank">GitHub</a>
+    <a href="https://leetcode.com/u/astha0807/" target="_blank">LeetCode</a>
   </div>
+</header>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<section id="about">
+  <h2>About Me</h2>
+  <div class="card">
+    <p>Software Engineer with 2+ years of experience building backend systems, scalable services, and distributed components. Strong in Python, Java, C/C++, concurrency, system design, microservices, and cloud platforms.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Work Experience</h2>
+  <div class="grid">
+    <div class="card"><strong>Software Engineer — Cisco</strong><br>Aug 2023 — Present
+      <p>Developed scalable backend components for Cisco FMC, optimized APIs, automation workflows, and improved CI/CD pipelines. Reduced latency by ~40%.</p>
+    </div>
+    <div class="card"><strong>Software Engineer Intern — Cisco</strong><br>Jan 2023 — Jun 2023
+      <p>Optimized FMC backend APIs, automated flows, enhanced policy reliability, and built scalable Postman collections.</p>
+    </div>
+    <div class="card"><strong>Backend Developer Intern — Cuvette</strong><br>Jul 2022 — Dec 2022
+      <p>Developed backend features using Django & REST APIs, optimized DB queries, and contributed to responsive UI components.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>Distributed Task Scheduler</strong>
+      <div class="tech">Java</div><div class="tech">Spring Boot</div><div class="tech">Kafka</div><div class="tech">Redis</div>
+      <p>Designed scalable distributed job scheduler with retries, priority queues, worker autoscaling, and distributed locking. Reduced delays by 40%.</p>
+    </div>
+    <div class="card">
+      <strong>Real-Time Log Monitoring & Alerting System</strong>
+      <div class="tech">Python</div><div class="tech">FastAPI</div><div class="tech">Redis Streams</div>
+      <p>Real-time log ingestion with sub-second latency, async processors, and Slack/Email alert routing.</p>
+    </div>
+    <div class="card">
+      <strong>Intelligent Log Anomaly Detector</strong>
+      <div class="tech">Python</div><div class="tech">ML</div><div class="tech">Scikit-learn</div>
+      <p>ML-based anomaly detection integrated with Kafka for real-time inference. Improved precision by 12% and reduced MTTR by ~40%.</p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Technical Skills</h2>
+  <div class="skills">
+    <div class="skill-badge">Java</div><div class="skill-badge">Python</div><div class="skill-badge">C/C++</div>
+    <div class="skill-badge">Distributed Systems</div><div class="skill-badge">Microservices</div><div class="skill-badge">Spring Boot</div>
+    <div class="skill-badge">Docker</div><div class="skill-badge">Kubernetes</div><div class="skill-badge">Kafka</div>
+    <div class="skill-badge">Redis</div><div class="skill-badge">SQL</div><div class="skill-badge">Linux</div>
+    <div class="skill-badge">Algorithms</div><div class="skill-badge">Data Structures</div>
+  </div>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <div class="grid">
+    <div class="card">
+      <strong>B.Tech — Information Technology</strong><br>
+      Gyan Ganga Institute of Technology and Sciences · 2019–2023 · GPA: 8.69
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form action="mailto:awasthi.astha.08100807@gmail.com" method="POST" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+</section>
+
+<footer>
+  <p>© <span id="year"></span> Astha Awasthi</p>
+</footer>
+
+<script>
+// Update year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Scroll reveal animation
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+  });
+},{threshold:0.2});
+sections.forEach(section => observer.observe(section));
+</script>
+
 </body>
 </html>
